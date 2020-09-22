@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <LangContext.Provider>
+        <LangContext.Provider value={this.state}>
           <Header />
           <div className={styles.app}>
             <Route path="/" exact component={Users} />
