@@ -18,8 +18,11 @@ const Input = ({ placeholder, name, label }) => {
 
   return (
     <>
-      <input placeholder={placeholder} data-testid="sample-input" id={name} value={inputValue} onChange={handleChange} />
-      <label htmlFor={name}>{label}</label>
+      <label className="label" htmlFor={name}>
+        {label}
+      </label>
+      <input className="input" placeholder={placeholder} data-testid="sample-input" id={name} value={inputValue} onChange={handleChange} />
+
       {isErrorVisible && (
         <p>
           <strong>Error</strong> can't pass digits

@@ -1,8 +1,10 @@
 import React from "react";
 
 const Users = () => (
-  <div>
-    <h2 className="title is-3">Users</h2>
+  <div className="container">
+    <div className="notification">
+      <h2 className="title is-3">Users</h2>
+    </div>
   </div>
 );
 
