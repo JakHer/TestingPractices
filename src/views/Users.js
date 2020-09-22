@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { rootAPI } from "../api";
+import { createPlaceholderImage, fetchData } from "../helpers";
 
 const Users = () => {
   const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const { data } = await axios.get(rootAPI);
-        setUsersData(data);
-      } catch (err) {
-        // console.log(err);
-      }
-    };
-    fetchUsers();
+    fetchData(rootAPI, setUsersData);
   }, []);
 
   return (
@@ -28,9 +20,23 @@ const Users = () => {
             <p>Loading users...</p>
           ) : (
             usersData.map(({ name, age }) => (
-              <li key={name}>
-                {name} is {age} years old
-              </li>
+              <div className="card">
+                <div className="card-content">
+                  <div className="media">
+                    <div className="media-left">
+                      <figure className="image is-48x48">
+                        <img src={createPlaceholderImage(96)} alt="" />
+                      </figure>
+                    </div>
+                    <div className="media-content">
+                      <p className="title is-4" key={name + age}>
+                        {name}, {age} years old
+                      </p>
+                      <p className="subtitle is-6">@{name.toLowerCase()}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))
           )}
         </ul>
