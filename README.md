@@ -23,6 +23,11 @@ Discovering React's testing techiques
 - Form Validation
 - onChange event testing
 - Props testing
+- Single Responsibility Principle
+- Advanced Patterns
+- Good practices knowledge
+- Testing own code
+- Advanced tools
 
 ## Setup
 

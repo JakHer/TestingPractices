@@ -1,5 +1,5 @@
 import React from "react";
-import { getAllByAltText, getAllByText, getByText, render, waitForElement } from "@testing-library/react";
+import { act, findByText, getAllByAltText, getAllByText, getByText, render, waitForElement } from "@testing-library/react";
 import Users from "../Users";
 import axios from "axios";
 import { rootAPI } from "../../api";
@@ -16,9 +16,9 @@ describe("Users view", () => {
 
   it("displays user data", async () => {
     axios.get.mockResolvedValue({ data: [{ name: "Kuba", age: 25 }] });
-    const { getAllByText } = render(<Users />);
 
-    const userInfo = await waitForElement(() => getAllByText(/Kuba/i));
+    const { getByText } = render(<Users />);
+    const userInfo = await waitForElement(() => getByText(/Kuba/));
 
     expect(userInfo).toBeInTheDocument();
     expect(axios.get).toHaveBeenCalledTimes(1);
